@@ -1,23 +1,22 @@
-use nannou::prelude::*;
+mod model;
+mod view;
+mod controller;
+
+mod prelude {
+    pub use nannou::prelude::*;
+    pub use crate::model::*;
+    pub use crate::view::*;
+    pub use crate::controller::*;
+
+    pub const WIDTH: u32 = 1080;
+    pub const HEIGHT: u32 = 1080;
+}
+
+use crate::prelude::*;
 
 fn main() {
-    nannou::app(model).update(update).loop_mode(LoopMode::RefreshSync).run();
-}
-
-struct Model {
-    _window: window::Id,
-}
-
-fn model(app: &App) -> Model {
-    let _window = app.new_window().view(view).build().unwrap();
-    Model { _window }
-}
-
-fn update(_app: &App, _model: &mut Model, _update: Update) {}
-
-fn view(app: &App, _model: &Model, frame: Frame) {
-    let draw = app.draw();
-    draw.background().color(PLUM);
-    draw.ellipse().color(STEELBLUE);
-    draw.to_frame(app, &frame).unwrap();
+    nannou::app(Model::new)
+        .update(update)
+        .loop_mode(LoopMode::RefreshSync)
+        .run();
 }
