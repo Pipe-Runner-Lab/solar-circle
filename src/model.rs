@@ -10,7 +10,7 @@ impl Model {
         let _window = app
             .new_window()
             .view(view)
-            .size(WIDTH, HEIGHT)
+            .size(WINDOW_WIDTH, WINDOW_HEIGHT)
             .build()
             .unwrap();
         Model { _window }
