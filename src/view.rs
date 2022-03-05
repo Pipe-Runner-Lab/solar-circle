@@ -16,7 +16,20 @@ pub fn view_art(app: &App, model: &Model, frame: Frame) {
         BACKGROUND_COLOR.2,
     ));
 
-    model.sun.tick(&ctx);
+    // TODO: Confusing reference here
+    for asset in &model.assets {
+        match &asset {
+            ASSETS::SUN(sun) => {
+                sun.tick(&ctx);
+            },
+            ASSETS::ORBIT(orbit) => {
+                orbit.tick(&ctx);
+            }
+            ASSETS::PLANET(planet) => {
+                planet.tick(&ctx);
+            }
+        }
+    }
 
     ctx.to_frame(app, &frame).unwrap();
 }
