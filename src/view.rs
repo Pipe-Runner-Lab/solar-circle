@@ -33,3 +33,7 @@ pub fn view_art(app: &App, model: &Model, frame: Frame) {
 
     ctx.to_frame(app, &frame).unwrap();
 }
+
+pub fn view_control_panel(app: &App, model: &Model, frame: Frame) {
+    model.control_panel.draw_to_frame_if_changed(app, &frame).unwrap();
+}

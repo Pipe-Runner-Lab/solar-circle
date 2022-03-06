@@ -3,15 +3,18 @@ mod controller;
 mod model;
 mod physics_engine;
 mod view;
+mod events;
 
 mod prelude {
     pub use nannou::prelude::*;
+    pub use nannou_conrod::prelude::*;
 
     pub use crate::assets::*;
     pub use crate::controller::*;
     pub use crate::model::*;
     pub use crate::physics_engine::*;
     pub use crate::view::*;
+    pub use crate::events::*;
 
     pub const WINDOW_WIDTH: u32 = 1080;
     pub const WINDOW_HEIGHT: u32 = 1080;
