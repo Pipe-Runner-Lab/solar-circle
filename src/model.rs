@@ -1,15 +1,13 @@
 use crate::prelude::*;
 
 // This defines the type of widgets the panel
-// should support and the order in which they should 
+// should support and the order in which they should
 // appear
 widget_ids! {
     pub struct Ids {
         title,
-        disp_label,
-        disp_slider,
-        rot_label,
-        rot_slider,
+        sun_radius_label,
+        sun_radius_slider,
         randomize,
         seed_label,
         seed_text,
@@ -21,14 +19,19 @@ pub struct Model {
     pub assets: Vec<ASSETS>,
     pub control_panel: Ui,
     pub control_panel_widget_ids: Ids,
+    pub asset_metrics: AssetMetrics,
 }
 
 impl Model {
     /// This function creates a new model instance
     pub fn new(app: &App) -> Self {
+        let asset_metrics = AssetMetrics { sun_radius: 50.0 };
+
         let mut assets = Vec::new();
 
-        assets.push(ASSETS::SUN(Sun {}));
+        assets.push(ASSETS::SUN(Sun {
+            radius: asset_metrics.sun_radius,
+        }));
         assets.push(ASSETS::ORBIT(Orbit {
             radius: 130.0,
             color: ORBIT_1_COLOR,
@@ -98,6 +101,7 @@ impl Model {
             .unwrap();
         let control_panel_widget_ids = Ids::new(control_panel.widget_id_generator());
 
+        // Set control panel theme
         control_panel.clear_with(color::DARK_CHARCOAL);
         let mut theme = control_panel.theme_mut();
         theme.label_color = color::WHITE;
@@ -108,6 +112,7 @@ impl Model {
             assets,
             control_panel,
             control_panel_widget_ids,
+            asset_metrics
         }
     }
 }
