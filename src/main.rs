@@ -4,8 +4,11 @@ mod model;
 mod physics_engine;
 mod view;
 mod events;
+mod control_panel;
 
 mod prelude {
+    use core::panic;
+
     pub use nannou::prelude::*;
     pub use nannou_conrod::prelude::*;
 
@@ -15,6 +18,7 @@ mod prelude {
     pub use crate::physics_engine::*;
     pub use crate::view::*;
     pub use crate::events::*;
+    pub use crate::control_panel::*;
 
     pub const WINDOW_WIDTH: u32 = 1080;
     pub const WINDOW_HEIGHT: u32 = 1080;
