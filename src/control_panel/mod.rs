@@ -8,6 +8,26 @@ widget_ids! {
       title,
       sun_radius_label,
       sun_radius_slider,
+
+      polar_radius_1_label,
+      polar_radius_1_slider,
+      planet_1_radius_label,
+      planet_1_radius_slider,
+
+      polar_radius_2_label,
+      polar_radius_2_slider,
+      planet_2_radius_label,
+      planet_2_radius_slider,
+
+      polar_radius_3_label,
+      polar_radius_3_slider,
+      planet_3_radius_label,
+      planet_3_radius_slider,
+
+      polar_radius_4_label,
+      polar_radius_4_slider,
+      planet_4_radius_label,
+      planet_4_radius_slider,
       randomize,
       seed_label,
       seed_text,
@@ -65,16 +85,34 @@ pub fn update_control_panel(model: &mut Model) {
     widget::Text::new("Sun Radius")
         .down_from(model.control_panel_widget_ids.title, 10.00)
         .w_h(125.0, 30.0)
+        .font_size(10)
         .set(model.control_panel_widget_ids.sun_radius_label, ui);
 
     // Sun Radius slider
     for value in widget::Slider::new(model.asset_metrics.sun_radius, 10.0, 100.0)
-        .right_from(model.control_panel_widget_ids.sun_radius_label, 10.0)
+        .down_from(model.control_panel_widget_ids.sun_radius_label, 1.0)
         .w_h(150.0, 30.0)
         .label(&model.asset_metrics.sun_radius.to_string())
         .set(model.control_panel_widget_ids.sun_radius_slider, ui)
     {
         model.asset_metrics.sun_radius = value;
+    }
+
+    // Planet 1 Radius label
+    widget::Text::new("Planet 1 Radius")
+        .down_from(model.control_panel_widget_ids.sun_radius_slider, 10.00)
+        .w_h(125.0, 30.0)
+        .font_size(10)
+        .set(model.control_panel_widget_ids.planet_1_radius_label, ui);
+
+    // Planet 1 Radius slider
+    for value in widget::Slider::new(model.asset_metrics.planet_1_radius, 100.0, 400.0)
+        .down_from(model.control_panel_widget_ids.planet_1_radius_label, 1.0)
+        .w_h(150.0, 30.0)
+        .label(&model.asset_metrics.planet_1_radius.to_string())
+        .set(model.control_panel_widget_ids.planet_1_radius_slider, ui)
+    {
+        model.asset_metrics.planet_1_radius = value;
     }
 
     // // Randomize button

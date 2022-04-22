@@ -10,6 +10,9 @@ pub fn update(_app: &App, model: &mut Model, _update: Update) {
             ASSETS::SUN(sun) => {
                 sun.radius = model.asset_metrics.sun_radius;
             },
+            ASSETS::PLANET(planet) => {
+                
+            },
             _ => {
                 // Do nothing
             }

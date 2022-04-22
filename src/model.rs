@@ -11,7 +11,17 @@ pub struct Model {
 impl Model {
     /// This function creates a new model instance
     pub fn new(app: &App) -> Self {
-        let asset_metrics = AssetMetrics { sun_radius: 50.0 };
+        let asset_metrics = AssetMetrics {
+            sun_radius: 50.0,
+            polar_radius_1: 130.0,
+            planet_1_radius: 20.0,
+            polar_radius_2: 200.0,
+            planet_2_radius: 10.0,
+            polar_radius_3: 270.0,
+            planet_3_radius: 35.0,
+            polar_radius_4: 340.0,
+            planet_4_radius: 25.0,
+        };
 
         let mut assets = Vec::new();
 
@@ -19,46 +29,46 @@ impl Model {
             radius: asset_metrics.sun_radius,
         }));
         assets.push(ASSETS::ORBIT(Orbit {
-            radius: 130.0,
+            radius: asset_metrics.polar_radius_1,
             color: ORBIT_1_COLOR,
         }));
         assets.push(ASSETS::PLANET(Planet {
             color: ORBIT_1_COLOR,
-            radius: 20.0,
-            polar_radius: 130.0,
+            radius: asset_metrics.planet_1_radius,
+            polar_radius: asset_metrics.polar_radius_1,
             polar_angle: 45.0,
         }));
 
         assets.push(ASSETS::ORBIT(Orbit {
-            radius: 200.0,
+            radius: asset_metrics.polar_radius_2,
             color: ORBIT_2_COLOR,
         }));
         assets.push(ASSETS::PLANET(Planet {
             color: ORBIT_2_COLOR,
-            radius: 10.0,
-            polar_radius: 200.0,
+            radius: asset_metrics.planet_2_radius,
+            polar_radius: asset_metrics.polar_radius_2,
             polar_angle: 110.0,
         }));
 
         assets.push(ASSETS::ORBIT(Orbit {
-            radius: 270.0,
+            radius: asset_metrics.polar_radius_3,
             color: ORBIT_3_COLOR,
         }));
         assets.push(ASSETS::PLANET(Planet {
             color: ORBIT_3_COLOR,
-            radius: 35.0,
-            polar_radius: 270.0,
+            radius: asset_metrics.planet_3_radius,
+            polar_radius: asset_metrics.polar_radius_3,
             polar_angle: 350.0,
         }));
 
         assets.push(ASSETS::ORBIT(Orbit {
-            radius: 340.0,
+            radius: asset_metrics.polar_radius_4,
             color: ORBIT_4_COLOR,
         }));
         assets.push(ASSETS::PLANET(Planet {
             color: ORBIT_4_COLOR,
-            radius: 25.0,
-            polar_radius: 340.0,
+            radius: asset_metrics.planet_4_radius,
+            polar_radius: asset_metrics.polar_radius_4,
             polar_angle: 279.0,
         }));
 

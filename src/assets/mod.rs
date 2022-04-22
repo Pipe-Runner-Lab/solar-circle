@@ -21,12 +21,12 @@ pub enum ASSETS {
 
 pub struct AssetMetrics {
     pub sun_radius: f32,
-}
-
-impl AssetMetrics {
-
-    // TODO: This is redundant if sun_radius is public
-    pub fn set_sun_radius(&mut self, radius: f32) {
-        self.sun_radius = radius;
-    }
+    pub polar_radius_1: f32,
+    pub planet_1_radius: f32,
+    pub polar_radius_2: f32,
+    pub planet_2_radius: f32,
+    pub polar_radius_3: f32,
+    pub planet_3_radius: f32,
+    pub polar_radius_4: f32,
+    pub planet_4_radius: f32,
 }
